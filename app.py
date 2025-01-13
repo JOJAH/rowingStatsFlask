@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)
 currentDate = datetime.now()
 
-@app.route('/1000km', methods=['GET'])
+@app.route('/yearData', methods=['GET'])
 def thousandKmPY():
     currentDay = currentDate.timetuple().tm_yday
     currentAverage = (1000/365)*currentDay
@@ -17,7 +17,7 @@ def thousandKmPY():
         'yearlyCumulativeTarget': currentAverage
     })
     
-@app.route('/100km', methods= ['GET'])
+@app.route('/monthData', methods= ['GET'])
 def hundredKmPM():
     year = currentDate.year
     month = currentDate.month
