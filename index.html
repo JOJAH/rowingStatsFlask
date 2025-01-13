@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rowing Stats</title>
+</head>
+<body>
+    <div id="100km"></div>
+    <div id="1000km"></div>
+
+    <script>
+        async function fetchData(){
+            try{
+                const thousandKM = await fetch('https://www.rowingstatsflask.onrender.com/1000km');
+                const thousandData = await thousandKM.json();
+                document.getElementById('1000km').innerHTML = thousandData.dayOfYear
+                console.log(thousandKM)
+            }catch(error){
+            console.error('Error fetching data:',error);
+        }}
+        fetchData()
+    </script>
+</body>
+</html>

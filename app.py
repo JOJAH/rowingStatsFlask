@@ -12,7 +12,7 @@ def thousandKmPY():
 
     return jsonify({
         'dayOfYear': currentDay,
-        'currentYearAverage': currentAverage
+        'yearlyCumulativeTarget': currentAverage
     })
     
 @app.route('/100km', methods= ['GET'])
@@ -27,8 +27,8 @@ def hundredKmPM():
     
     return jsonify({
         'dayOfMonth': day,
-        'requiredAverage': dayAverage,
-        'currentMonthAverage': currentAverage
+        'dailyAverage': dayAverage,
+        'monthlyCumulativeTarget': currentAverage
     })
 
 if __name__ == '__main__':
