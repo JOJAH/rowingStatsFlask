@@ -4,6 +4,7 @@ import calendar
 from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 currentDate = datetime.now()
 
 @app.route('/1000km', methods=['GET'])
