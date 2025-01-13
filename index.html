@@ -14,7 +14,7 @@
             try{
                 const yearDataFetch = await fetch('https://rowingstatsflask.onrender.com/yearData');
                 const yearData = await yearDataFetch.json();
-                document.getElementById('1000km').innerHTML = String(yearData.dayOfYear) + '\ln' + String(yearData.yearlyCumulativeTarget)
+                document.getElementById('1000km').innerHTML = String(yearData.dayOfYear) + '<br>' + String(yearData.yearlyCumulativeTarget)
 
                 const hundredDataFetch = await fetch('https://rowingstatsflask.onrender.com/monthData');
             }catch(error){

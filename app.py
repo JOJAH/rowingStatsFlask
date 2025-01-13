@@ -10,7 +10,7 @@ currentDate = datetime.now()
 @app.route('/yearData', methods=['GET'])
 def thousandKmPY():
     currentDay = currentDate.timetuple().tm_yday
-    currentAverage = (1000/365)*currentDay
+    currentAverage = round((1000/365)*currentDay, 1)
 
     return jsonify({
         'dayOfYear': currentDay,
