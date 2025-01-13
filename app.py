@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from datetime import datetime 
 import calendar
+from flask_cors import CORS
 
 app = Flask(__name__)
 currentDate = datetime.now()
