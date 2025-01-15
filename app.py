@@ -29,8 +29,8 @@ def hundredKmPM():
     
     return jsonify({
         'dayOfMonth': day,
-        'dailyAverage': dayAverage,
-        'monthlyCumulativeTarget': currentAverage
+        'monthDailyAverage': dayAverage,
+        'monthCumulativeTarget': currentAverage
     })
 
 if __name__ == '__main__':
