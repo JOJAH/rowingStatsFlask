@@ -12,15 +12,24 @@
     <script>
         async function fetchData(){
             try{
+                const monthDataFetch = await fetch('https://rowingstatsflask.onrender.com/monthData');
+                const monthData = await monthDataFetch.json();
+                document.getElementById('100km').innerHTML = String(monthData.dayOfMonth) + '<br>' + String(monthData.dailyAverage) + '<br>' + String(monthData.monthlyCumulativeTarget);
+                
                 const yearDataFetch = await fetch('https://rowingstatsflask.onrender.com/yearData');
                 const yearData = await yearDataFetch.json();
-                document.getElementById('1000km').innerHTML = String(yearData.dayOfYear) + '<br>' + String(yearData.yearlyCumulativeTarget)
-
-                const hundredDataFetch = await fetch('https://rowingstatsflask.onrender.com/monthData');
+                document.getElementById('1000km').innerHTML = '<br>' + String(yearData.dayOfYear) + '<br>' + String(yearData.yearlyCumulativeTarget);
             }catch(error){
             console.error('Error fetching data:',error);
         }}
         fetchData()
     </script>
 </body>
+<style>
+    body {
+        background-color: black;
+        color: white;
+    }
+     
+</style>
 </html>
