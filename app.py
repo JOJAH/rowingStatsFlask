@@ -24,7 +24,7 @@ def hundredKmPM():
     day = currentDate.day
 
     days = calendar.monthrange(year,month)[1]
-    dayAverage = 100 / days 
+    dayAverage = round(100 / days, 1) 
     currentAverage = dayAverage * day
     
     return jsonify({
