@@ -6,19 +6,38 @@
     <title>Rowing Stats</title>
 </head>
 <body>
-    <div id="100km"></div>
-    <div id="1000km"></div>
-
+    <div id="dataContainer">
+        <div id="month">
+            <p>Day <span id="dayOfMonth">TBA</span> of the <span>Month</span></p>
+            <p><span id="monthDailyAverage">TBA</span>  per day</p>
+            <p><span id="monthCumulativeTarget">TBA</span> is the Daily Cumulative Target for <span>100km per month</span></p>
+        </div>
+        <div id="year">
+            <p>Day <span id="dayOfYear">TBA</span> of the <span>Year</span></p>
+            <p><span>2.74km</span> per day</p>
+            <p><span id="yearlyCumulativeTarget">TBA</span> is the Daily Cumulative Target for <span>1000km per year</span></p>
+        </div>
+    </div>
+    <div id="loading">
+        <img src="loading.gif" alt="Loading...">
+    </div>
     <script>
         async function fetchData(){
             try{
                 const monthDataFetch = await fetch('https://rowingstatsflask.onrender.com/monthData');
                 const monthData = await monthDataFetch.json();
-                document.getElementById('100km').innerHTML = String(monthData.dayOfMonth) + '<br>' + String(monthData.dailyAverage) + '<br>' + String(monthData.monthlyCumulativeTarget);
                 
+                document.getElementById("dayOfMonth").innerHTML = monthData.dayOfMonth;
+                document.getElementById("monthDailyAverage").innerHTML = String(monthData.monthDailyAverage) + 'km';
+                document.getElementById("monthCumulativeTarget").innerHTML = String(monthData.monthCumulativeTarget) + 'km';
+
                 const yearDataFetch = await fetch('https://rowingstatsflask.onrender.com/yearData');
                 const yearData = await yearDataFetch.json();
-                document.getElementById('1000km').innerHTML = '<br>' + String(yearData.dayOfYear) + '<br>' + String(yearData.yearlyCumulativeTarget);
+                document.getElementById('dayOfYear').innerHTML = yearData.dayOfYear
+                document.getElementById('yearlyCumulativeTarget').innerHTML = String(yearData.yearlyCumulativeTarget)+'km'
+
+                //hide loading gif when data loads
+                document.getElementById("loading").style.display = 'none';
             }catch(error){
             console.error('Error fetching data:',error);
         }}
@@ -29,6 +48,30 @@
     body {
         background-color: black;
         color: white;
+        font-size: larger;
+    }
+    span{
+        font-weight: bold;
+    }
+    p{
+        margin: 1px;
+    }
+    #dataContainer{
+        display: flex;
+        justify-content: space-between;
+        padding-inline: 15em;
+        padding-top: 1em;
+    }
+    #month span{
+        color: orange;
+    }
+    #year span{
+        color:dodgerblue;
+    }
+    #loading{
+        display: flex;
+        width: 100%;
+        justify-content: center;
     }
      
 </style>
